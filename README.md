@@ -2,11 +2,12 @@
 
 ## Prerequisites
 
-- A registered top-level domain (e.g. pivotaledu.io)
+- A registered top-level domain (e.g. thekoguryo.ml)
 - An appropriately configured subdomain (e.g. cls66env99) to represent this instance
 - A [GCP account](https://cloud.google.com/) (credit card identification is required for account registration)
 - A pristine GCP project
 - A [PivNet](https://network.pivotal.io/) account
+
 
 ## Creating a jumpbox on GCP
 
@@ -39,6 +40,7 @@ If you would prefer to use the [Google Cloud SDK](https://cloud.google.com/sdk/i
 your local machine, remember to first authenticate with `gcloud auth login` and add the
 `--project <TARGET_PROJECT_ID>` argument to the commands shown above.
 
+
 ## Initialize the `gcloud` CLI on the jumpbox:
 
 From your jumpbox SSH session, authenticate the SDK with your GCP account
@@ -52,6 +54,7 @@ our `gcloud` CLI jumpbox session into a local browser in order to select
 the account you have registered for use with Google Cloud. Additionally, 
 you'll need copy-paste the verification code back into your jumpbox 
 session to complete the login sequence.
+
 
 ## Enable the GCP services APIs in current project
 
@@ -123,6 +126,23 @@ Create a `~/.env` configuration file to describe the specifics of your environme
 
 _Note_ you should not proceed until you have __customized__ the "CHANGE_ME" settings 
 in your `~/.env` file to suit your target environment.
+
+```bash
+PCF_PIVNET_UAA_TOKEN=1892f354352547d69xxxxxxxxx-r    # see https://network.pivotal.io/users/dashboard/edit-profile
+PCF_DOMAIN_NAME=thekoguryo.ml                        # e.g. pivotaledu.io
+PCF_SUBDOMAIN_NAME=env-001                           # e.g. cls99env66
+PCF_OPSMAN_ADMIN_PASSWD=1892f354352547d69xxxxxxxxx-r # e.g. for simplicity, recycle your PCF_PIVNET_UAA_TOKEN 
+PCF_REGION=us-central1                               # e.g. us-central1     
+PCF_AZ_1=us-central1-a                               # e.g. us-central1-a       
+PCF_AZ_2=us-central1-b                               # e.g. us-central1-b       
+PCF_AZ_3=us-central1-c                               # e.g. us-central1-c       
+PCF_OPSMAN_FQDN=opsmgr.${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
+PCF_PKS=pks.${PCF_SUBDOMAIN_NAME}.${PCF_DOMAIN_NAME}
+export OM_TARGET=${PCF_OPSMAN_FQDN}
+export OM_USERNAME=admin
+export OM_PASSWORD=${PCF_OPSMAN_ADMIN_PASSWD}
+export OM_DECRYPTION_PASSPHRASE=${PCF_OPSMAN_ADMIN_PASSWD}
+```
 
 ## Register the configuration file
 
