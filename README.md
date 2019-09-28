@@ -158,14 +158,14 @@ gcloud iam service-accounts keys create 'gcp_credentials.json' \
 ## Download an Ops Manager image identifier from Pivotal Network
 
 ```bash
-OPSMAN_VERSION=2.4.1
+OPSMAN_VERSION=2.6.11
 
-PRODUCT_NAME="Pivotal Cloud Foundry Operations Manager" \
-DOWNLOAD_REGEX="Pivotal Cloud Foundry Ops Manager YAML for GCP" \
+PRODUCT_NAME="Pivotal Operations Manager" \
+DOWNLOAD_REGEX="Pivotal Ops Manager YAML for GCP - 2.6.11-build.210" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
   ./scripts/download-product.sh
 
-OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/OpsManager*onGCP.yml --path /us)
+OPSMAN_IMAGE=$(bosh interpolate ./downloads/ops-manager_${OPSMAN_VERSION}_*/ops-manager-gcp-*.yml --path /us)
 ```
 
 Check the value of `OPSMAN_IMAGE` before continuing.
@@ -182,9 +182,9 @@ Please note:
 - These Terraform scripts can support the infrastructure for PAS _or_ PKS.
 
 ```bash
-PAS_VERSION=2.4.1
+PAS_VERSION=2.6.6
 
-PRODUCT_NAME="Pivotal Application Service (formerly Elastic Runtime)" \
+PRODUCT_NAME="Pivotal Application Service" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
   ./scripts/download-product.sh
