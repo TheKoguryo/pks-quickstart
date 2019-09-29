@@ -115,7 +115,7 @@ Clone the platform automation scripts and change into the directory of our clone
 to keep our task script commands short
 
 ```bash
-git clone https://github.com/amcginlay/ops-manager-automation.git ~/ops-manager-automation
+git clone https://github.com/TheKoguryo/ops-manager-automation.git ~/ops-manager-automation
 cd ~/ops-manager-automation
 ```
 
@@ -311,8 +311,6 @@ DOWNLOAD_REGEX="Google" \
 
 IMPORTED_VERSION=2.4.1 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
 
-./scripts/apply-changes.sh
-
 ```
 
 ## Use automation tools to deploy PKS
@@ -329,7 +327,7 @@ DOWNLOAD_REGEX="Pivotal Container Service" \
   ./scripts/import-product.sh
 
 IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.5.0-build.32" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.0-build.32" ./scripts/configure-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.5.0-build.32" ./scripts/configure-product.sh
 
 ./scripts/apply-changes.sh
 
