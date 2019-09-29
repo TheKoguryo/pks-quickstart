@@ -291,6 +291,17 @@ cd ~/ops-manager-automation
 ./scripts/configure-authentication.sh
 ```
 
+## Configure BOSH
+
+```bash
+cd ~/ops-manager-automation
+
+IMPORTED_VERSION=2.4.1 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
+
+./scripts/apply-changes.sh
+
+```
+
 ## Use automation tools to deploy PKS
 
 As you execute the following steps, watch out for possible PivNet EULA acceptance warnings which show in red.
@@ -311,8 +322,8 @@ PRODUCT_VERSION="1.5.0" \
 DOWNLOAD_REGEX="Pivotal Container Service" \
   ./scripts/import-product.sh
 
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.6-build.2" ./scripts/stage-product.sh
-IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.6-build.2" ./scripts/configure-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.5.0-build.32" ./scripts/stage-product.sh
+IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.2.0-build.32" ./scripts/configure-product.sh
 
 ./scripts/apply-changes.sh
 
