@@ -81,7 +81,7 @@ sudo gem install --no-ri --no-rdoc cf-uaac
 ```
 
 ```bash
-TF_VERSION=0.12.9
+TF_VERSION=0.11.11
 wget -O terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip && \
   unzip terraform.zip && \
   sudo mv terraform /usr/local/bin
@@ -183,6 +183,8 @@ gcloud iam service-accounts keys create 'gcp_credentials.json' \
 ```bash
 OPSMAN_VERSION=2.6.11
 
+cd ~/ops-manager-automation
+
 PRODUCT_NAME="Pivotal Operations Manager" \
 DOWNLOAD_REGEX="Pivotal Ops Manager YAML for GCP - 2.6.11-build.210" \
 PRODUCT_VERSION=${OPSMAN_VERSION} \
@@ -207,6 +209,8 @@ Please note:
 ```bash
 PAS_VERSION=2.6.6
 
+cd ~/ops-manager-automation
+
 PRODUCT_NAME="Pivotal Application Service" \
 DOWNLOAD_REGEX="GCP Terraform Templates" \
 PRODUCT_VERSION=${PAS_VERSION} \
@@ -218,6 +222,8 @@ unzip ./downloads/elastic-runtime_${PAS_VERSION}_*/terraforming-gcp-*.zip -d .
 ## Generate a wildcard SAN certificate
 
 ```no-highlight
+cd ~/ops-manager-automation
+
 ./scripts/mk-ssl-cert-key.sh
 ```
 
