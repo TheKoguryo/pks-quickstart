@@ -283,6 +283,14 @@ Successful DNS resolution is fully dependent on having a ${PCF_SUBDOMAIN_NAME}.$
 
 ![route_53_ns](route_53_ns.png)
 
+## Configure Authentication of Ops Manager
+
+```bash
+cd ~/ops-manager-automation
+
+./scripts/configure-authentication.sh
+```
+
 ## Use automation tools to deploy PKS
 
 As you execute the following steps, watch out for possible PivNet EULA acceptance warnings which show in red.
@@ -290,8 +298,6 @@ The output will present links which you should follow in a browser before you ca
 
 ```bash
 cd ~/ops-manager-automation
-
-./scripts/configure-authentication.sh
 
 IMPORTED_VERSION=2.4.1 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
 
