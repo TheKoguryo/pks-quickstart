@@ -300,7 +300,7 @@ DOWNLOAD_REGEX="Google" \
   ./scripts/import-product.sh
 
 PRODUCT_NAME="Pivotal Container Service (PKS)" \
-PRODUCT_VERSION="1.2.6" \
+PRODUCT_VERSION="1.5.0" \
 DOWNLOAD_REGEX="Pivotal Container Service" \
   ./scripts/import-product.sh
 
@@ -328,11 +328,11 @@ Extract the PKS admin password using `om credentials`
 Install pks and kubectl cli tools:
 
 ```bash
-pivnet download-product-files -p "pivotal-container-service" -r "1.2.6" -g "pks-linux*" && \
+pivnet download-product-files -p "pivotal-container-service" -r "1.5.0" -g "pks-linux*" && \
   chmod +x pks-linux* && \
   sudo mv pks-linux* /usr/local/bin/pks
 
-pivnet download-product-files -p "pivotal-container-service" -r "1.2.6" -g "kubectl-linux*" && \
+pivnet download-product-files -p "pivotal-container-service" -r "1.5.0" -g "kubectl-linux*" && \
   chmod +x kubectl-linux* && \
   sudo mv kubectl-linux* /usr/local/bin/kubectl
 ```
