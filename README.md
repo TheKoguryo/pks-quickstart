@@ -470,6 +470,8 @@ Select the ~/kubeconfig file if/when prompted to do so.
 
 # Deploy
 
+<details><summary>Expancd</summary>
+
 ## Deploy the nginx webserver docker image
 
 ```bash
@@ -596,3 +598,4 @@ echo http://${LOAD_BALANCER_IP}:${SERVICE_PORT}
 ```
 
 
+</details>
