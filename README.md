@@ -81,22 +81,22 @@ sudo gem install --no-ri --no-rdoc cf-uaac
 ```
 
 ```bash
-TF_VERSION=0.11.11
+TF_VERSION=0.12.9
 wget -O terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip && \
   unzip terraform.zip && \
   sudo mv terraform /usr/local/bin
 
-OM_VERSION=0.46.0
+OM_VERSION=0.57.0
 wget -O om https://github.com/pivotal-cf/om/releases/download/${OM_VERSION}/om-linux && \
   chmod +x om && \
   sudo mv om /usr/local/bin/
 
-PN_VERSION=0.0.55
+PN_VERSION=0.0.64
 wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PN_VERSION}/pivnet-linux-amd64-${PN_VERSION} && \
   chmod +x pivnet && \
   sudo mv pivnet /usr/local/bin/
 
-BOSH_VERSION=5.4.0
+BOSH_VERSION=6.1.0
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
   chmod +x bosh && \
   sudo mv bosh /usr/local/bin/
@@ -165,6 +165,8 @@ set | grep PCF
 ## Create a GCP service account for terraform in current project
 
 ```bash
+cd ~/ops-manager-automation
+
 gcloud iam service-accounts create terraform --display-name terraform
 
 gcloud projects add-iam-policy-binding $(gcloud config get-value core/project) \
