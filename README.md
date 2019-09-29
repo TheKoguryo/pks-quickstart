@@ -338,11 +338,11 @@ IMPORTED_NAME="pivotal-container-service" IMPORTED_VERSION="1.5.0-build.32" ./sc
 Extract the PKS admin password using `om credentials`
 
    ```bash   
-   PCF_PKS_UAA_ADMIN_PASSWORD=$(om credentials \
+   PCF_PKS_UAA_ADMIN_PASSWORD=$(om --skip-ssl-validation credentials \
     -p pivotal-container-service \
     -c '.properties.uaa_admin_password' \
-    -f secret)
-   )   
+    -f secret
+   )
    ```
 
 ## Connect to PKS
@@ -362,11 +362,16 @@ pivnet download-product-files -p "pivotal-container-service" -r "1.5.0" -g "kube
 Login to PKS:
 
 ```bash
+PCF_PKS_UAA_ADMIN_PASSWORD=
+PCF_PKS=pks.env-001.thekoguryo.ml
+
 pks login \
   --api api.${PCF_PKS} \
   --username admin \
   --password ${PCF_PKS_UAA_ADMIN_PASSWORD} \
   --skip-ssl-validation
+
+pks clusters
 ```
 
 ## Use the PKS client to create your Kubernetes cluster
