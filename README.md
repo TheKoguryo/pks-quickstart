@@ -433,6 +433,43 @@ pks get-credentials k8s
 
 This will create/modify the `~/.kube` directory used by the `kubectl` tool.
 
+
+# The Kubernetes Dashboard (local machine only)
+
+To run these commands you will need to install and configure the `pks` and `kubctl` cli tools locally.
+
+Keep your jumpbox session open for quick access to the required variable values, then repeat the following steps:
+
+* Find the UAA admin password for PKS
+* Connect to PKS (install CLI tools as per machine specific requirements)
+* Use the PKS client to cache the cluster creds
+
+_Note_ the following command line instructions assume Bash shell and will likely need adjusting to suit Windows users.
+
+
+## Copy the hidden `.kube/config` file
+
+So it's easy to find later
+
+```bash
+cp ~/.kube/config ~/kubeconfig
+```
+
+## Open a tunnel from localhost to your cluster
+
+```bash
+kubectl proxy &
+```
+
+## Inspect the Kubernetes dashboard
+
+Navigate to `http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+
+Select the ~/kubeconfig file if/when prompted to do so.
+
+
+# Deploy
+
 ## Deploy the nginx webserver docker image
 
 ```bash
@@ -558,55 +595,4 @@ Navigate to the page resolved by executing:
 echo http://${LOAD_BALANCER_IP}:${SERVICE_PORT}
 ```
 
-# The Kubernetes Dashboard (local machine only)
 
-To run these commands you will need to install and configure the `pks` and `kubctl` cli tools locally.
-
-Keep your jumpbox session open for quick access to the required variable values, then repeat the following steps:
-
-* Find the UAA admin password for PKS
-* Connect to PKS (install CLI tools as per machine specific requirements)
-* Use the PKS client to cache the cluster creds
-
-_Note_ the following command line instructions assume Bash shell and will likely need adjusting to suit Windows users.
-
-## Allow remote access to the Kubernetes dashboard
-
-```bash
-kubectl create -f - << EOF
-apiVersion: rbac.authorization.k8s.io/v1beta1
-kind: ClusterRoleBinding
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    k8s-app: kubernetes-dashboard
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
-EOF
-```
-
-## Copy the hidden `.kube/config` file
-
-So it's easy to find later
-
-```bash
-cp ~/.kube/config ~/kubeconfig
-```
-
-## Open a tunnel from localhost to your cluster
-
-```bash
-kubectl proxy &
-```
-
-## Inspect the Kubernetes dashboard
-
-Navigate to `http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
-
-Select the ~/kubeconfig file if/when prompted to do so.
