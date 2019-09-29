@@ -86,7 +86,7 @@ wget -O terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/ter
   unzip terraform.zip && \
   sudo mv terraform /usr/local/bin
 
-OM_VERSION=0.57.0
+OM_VERSION=0.46.0
 wget -O om https://github.com/pivotal-cf/om/releases/download/${OM_VERSION}/om-linux && \
   chmod +x om && \
   sudo mv om /usr/local/bin/
@@ -96,7 +96,7 @@ wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PN_
   chmod +x pivnet && \
   sudo mv pivnet /usr/local/bin/
 
-BOSH_VERSION=6.1.0
+BOSH_VERSION=5.4.0
 wget -O bosh https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSH_VERSION}-linux-amd64 && \
   chmod +x bosh && \
   sudo mv bosh /usr/local/bin/
@@ -304,6 +304,11 @@ cd ~/ops-manager-automation
 ```bash
 cd ~/ops-manager-automation
 
+PRODUCT_NAME="Pivotal Stemcells (Ubuntu Xenial)" \
+PRODUCT_VERSION="315.97" \
+DOWNLOAD_REGEX="Google" \
+  ./scripts/import-product.sh
+
 IMPORTED_VERSION=2.4.1 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
 
 ./scripts/apply-changes.sh
@@ -317,13 +322,6 @@ The output will present links which you should follow in a browser before you ca
 
 ```bash
 cd ~/ops-manager-automation
-
-IMPORTED_VERSION=2.4.1 TARGET_PLATFORM=pks ./scripts/configure-director-gcp.sh
-
-PRODUCT_NAME="Stemcells for PCF (Ubuntu Xenial)" \
-PRODUCT_VERSION="97.52" \
-DOWNLOAD_REGEX="Google" \
-  ./scripts/import-product.sh
 
 PRODUCT_NAME="Pivotal Container Service (PKS)" \
 PRODUCT_VERSION="1.5.0" \
