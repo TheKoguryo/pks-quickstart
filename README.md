@@ -470,7 +470,7 @@ Select the ~/kubeconfig file if/when prompted to do so.
 
 # Deploy
 
-<details><summary>Expancd</summary>
+<details><summary>Deploy Details</summary>
 
 ## Deploy the nginx webserver docker image
 
