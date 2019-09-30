@@ -1,6 +1,5 @@
 # pks-quickstart
 
-
 ## Prerequisites
 
 - A registered top-level domain (e.g. thekoguryo.ml)
