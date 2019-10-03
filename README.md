@@ -26,7 +26,7 @@ gcloud compute instances create "jbox-pcf" \
   --image-project "ubuntu-os-cloud" \
   --image-family "ubuntu-1804-lts" \
   --boot-disk-size "200" \
-  --machine-type=f1-micro \
+  --machine-type=g1-small \
   --tags="jbox-pcf" \
   --zone us-central1-a
 ```
